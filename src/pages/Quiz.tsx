@@ -7,7 +7,6 @@ import QuestionCard from "@/components/QuestionCard";
 import RoundSummary from "@/components/RoundSummary";
 import QuizComplete from "@/components/QuizComplete";
 import { updateGameState } from "@/services/gameSession";
-import { addSimulatedPlayers, simulateAnswers } from "@/services/simulateUsers";
 
 const Quiz = () => {
   const { 
@@ -35,7 +34,6 @@ const Quiz = () => {
   const [showingSummary, setShowingSummary] = useState(false);
   const [questionKey, setQuestionKey] = useState(0);
   const [waitingForOthers, setWaitingForOthers] = useState(false);
-  const [hasSimulatedPlayers, setHasSimulatedPlayers] = useState(false);
   
   // Filter questions for current round
   const roundQuestions = questions.filter(q => q.roundId === currentRound);
@@ -240,46 +238,7 @@ const Quiz = () => {
     }
   };
 
-  // Add simulated players
-  const handleAddSimulatedPlayers = async () => {
-    if (!gameSession?.id || !isSessionHost) {
-      console.error('Cannot add simulated players: not a host or no active session');
-      return;
-    }
-    
-    try {
-      await addSimulatedPlayers(gameSession.id);
-      setHasSimulatedPlayers(true);
-    } catch (error) {
-      console.error('Error adding simulated players:', error);
-      // Reset simulation state if it fails
-      setHasSimulatedPlayers(false);
-    }
-  };
-
-  // Simulate answers for current question
-  const simulateCurrentAnswers = async () => {
-    if (!gameSession?.id) {
-      console.error('Cannot simulate answers: no active session');
-      return;
-    }
-    
-    if (!currentQuestion) {
-      console.error('Cannot simulate answers: no current question');
-      return;
-    }
-    
-    if (!isSessionHost) {
-      console.error('Cannot simulate answers: not a host');
-      return;
-    }
-    
-    try {
-      await simulateAnswers(gameSession.id, currentQuestion.id);
-    } catch (error) {
-      console.error('Error simulating answers:', error);
-    }
-  };
+  // Testing functions removed
 
   // If quiz is completed, show completion screen
   if (quizCompleted) {
@@ -333,26 +292,9 @@ const Quiz = () => {
         {/* Use md:space-x-4 for horizontal spacing on medium and up */}
         <div className="container flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-4">
           <h2 className="font-semibold text-lg md:text-base">Quiz Game - Round {currentRound}</h2>
-          {/* Container for buttons and player info, stacks vertically on small screens */}
+          {/* Container for player info, stacks vertically on small screens */}
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 md:space-x-4">
-            {isSessionHost && !hasSimulatedPlayers && !showingSummary && !quizCompleted && (
-              <Button
-                onClick={handleAddSimulatedPlayers}
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/20 w-full sm:w-auto"
-              >
-                Add 20 Test Players
-              </Button>
-            )}
-            {isSessionHost && hasSimulatedPlayers && !showingSummary && !quizCompleted && currentQuestion && (
-              <Button
-                onClick={simulateCurrentAnswers}
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/20 w-full sm:w-auto"
-              >
-                Simulate Answers
-              </Button>
-            )}
+            {/* Removed Add 20 Test Players and Simulate Answers buttons */}
             {/* Player info also stacks on very small screens if needed, or adjust text size */}
             <div className="flex flex-col xs:flex-row items-center space-y-2 xs:space-y-0 xs:space-x-2">
               <div className="bg-white/20 px-3 py-1.5 rounded-full text-sm">
