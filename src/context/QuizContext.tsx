@@ -165,7 +165,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
 
   const questions: Question[] = [
     // Round 1
-    { id: 'r1q1', text: 'What is the company results party date?', roundId: 1 },
+    { id: 'r1q1', text: 'What is the company results party date? (dd/mm)', roundId: 1 },
     { id: 'r1q2', text: 'What is the missing domain in https://???.conducttr.com/projects?', roundId: 1 },
     { id: 'r1q3', text: 'What is the name of our AI-built colleague on LinkedIn?', roundId: 1 },
     { id: 'r1q4', text: 'How many clocks are there in our office?', roundId: 1 },

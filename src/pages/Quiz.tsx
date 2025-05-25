@@ -328,14 +328,18 @@ const Quiz = () => {
       </div>
 
       <header className="p-4 border-b border-white/10">
-        <div className="container flex justify-between items-center">
-          <h2 className="font-semibold">Quiz Game - Round {currentRound}</h2>
-          <div className="flex items-center space-x-4">
+        {/* Apply flex-col on small screens, md:flex-row for medium and up */}
+        {/* Add space-y-2 for vertical spacing on small screens, md:space-y-0 for no vertical spacing on medium and up */}
+        {/* Use md:space-x-4 for horizontal spacing on medium and up */}
+        <div className="container flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 md:space-x-4">
+          <h2 className="font-semibold text-lg md:text-base">Quiz Game - Round {currentRound}</h2>
+          {/* Container for buttons and player info, stacks vertically on small screens */}
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 md:space-x-4">
             {isSessionHost && !hasSimulatedPlayers && !showingSummary && !quizCompleted && (
               <Button
                 onClick={handleAddSimulatedPlayers}
                 variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/20"
+                className="bg-transparent border-white text-white hover:bg-white/20 w-full sm:w-auto"
               >
                 Add 20 Test Players
               </Button>
@@ -344,25 +348,28 @@ const Quiz = () => {
               <Button
                 onClick={simulateCurrentAnswers}
                 variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/20"
+                className="bg-transparent border-white text-white hover:bg-white/20 w-full sm:w-auto"
               >
                 Simulate Answers
               </Button>
             )}
-            <div className="bg-white/20 px-4 py-2 rounded-full">
-              <span className="font-medium">Playing as: </span>
-              <span className="font-bold">{nickname}</span>
-            </div>
-            {selectedTeam && (
-              <div className={`${selectedTeam.color} px-4 py-2 rounded-full`}>
-                <span className="font-medium text-white">{selectedTeam.name}</span>
+            {/* Player info also stacks on very small screens if needed, or adjust text size */}
+            <div className="flex flex-col xs:flex-row items-center space-y-2 xs:space-y-0 xs:space-x-2">
+              <div className="bg-white/20 px-3 py-1.5 rounded-full text-sm">
+                <span className="font-medium">Playing as: </span>
+                <span className="font-bold">{nickname}</span>
               </div>
-            )}
+              {selectedTeam && (
+                <div className={`${selectedTeam.color} px-3 py-1.5 rounded-full text-sm`}>
+                  <span className="font-medium text-white">{selectedTeam.name}</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
       
-      <main className="flex-1 flex items-center justify-center p-6">
+      <main className="flex-1 flex items-center justify-center p-4 md:p-6">
         <div className="w-full max-w-2xl">
           {showingSummary ? (
             <RoundSummary 
