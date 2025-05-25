@@ -116,6 +116,11 @@ const TeamSelection = () => {
     }
   };
 
+  // Function to navigate to the scratch card page
+  const goToScratchCardPage = () => {
+    navigate("/scratch-card"); // Or "/dice-roll" if you prefer that path
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-quiz-red-700 to-quiz-red-900 text-white">
       <header className="p-4 border-b border-white/10">
@@ -128,6 +133,19 @@ const TeamSelection = () => {
         </div>
       </header>
       
+      {/* Button to navigate to Scratch Card Page - visible only to session host */}
+      {isSessionHost && (
+        <div className="absolute top-6 right-6 p-4 z-10"> {/* Adjusted top and right values */}
+          <Button 
+            onClick={goToScratchCardPage} 
+            variant="outline"
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-4 rounded-lg shadow-md"
+          >
+            Reveal Prizes
+          </Button>
+        </div>
+      )}
+
       <main className="flex-1 flex items-center justify-center p-6">
         <div className="w-full max-w-4xl">
           <div className="text-center mb-8">

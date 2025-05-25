@@ -9,7 +9,6 @@ import Quiz from "./pages/Quiz";
 import TeamSelection from "./pages/TeamSelection";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
-import DiceRollPage from "./pages/DiceRollPage";
 import ScratchCardPage from "./pages/ScratchCardPage";
 
 const queryClient = new QueryClient();
@@ -22,11 +21,12 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Reverted to Index as the root component */}
             <Route path="/" element={<Index />} />
             <Route path="/team-selection" element={<TeamSelection />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/dice-roll" element={<DiceRollPage winningTeams={[]} />} />
+            <Route path="/dice-roll" element={<ScratchCardPage />} />
             <Route path="/scratch-card" element={<ScratchCardPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
