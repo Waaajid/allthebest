@@ -324,7 +324,7 @@ const Quiz = () => {
               questionNumber={currentQuestionIndex + 1}
               questionText={currentQuestion.text}
               onSubmit={handleAnswerSubmit}
-              timerSeconds={10}
+              timerSeconds={12}
             />
           ) : (
             <div className="text-center">
