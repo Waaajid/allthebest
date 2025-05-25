@@ -83,8 +83,8 @@ const TeamSelection = () => {
         description: "Redirecting to game setup...",
       });
       
-      // Navigate immediately after successful join
-      navigate("/onboarding");
+      // Navigate to team roster after successful join
+      navigate("/team-roster");
     } catch (error) {
       console.error('Failed to join team:', error);
       toast({

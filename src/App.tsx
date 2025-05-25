@@ -7,6 +7,7 @@ import { QuizProvider } from "./context/QuizContext";
 import Index from "./pages/Index";
 import Quiz from "./pages/Quiz";
 import TeamSelection from "./pages/TeamSelection";
+import TeamRoster from "./pages/TeamRoster";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import ScratchCardPage from "./pages/ScratchCardPage";
@@ -24,6 +25,7 @@ const App = () => (
             {/* Reverted to Index as the root component */}
             <Route path="/" element={<Index />} />
             <Route path="/team-selection" element={<TeamSelection />} />
+            <Route path="/team-roster" element={<TeamRoster />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/dice-roll" element={<ScratchCardPage />} />
