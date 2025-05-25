@@ -1,73 +1,85 @@
-# Welcome to your Lovable project
+# All The Best - Quiz Game
 
-## Project info
+This is a fun, interactive quiz game application.
 
-**URL**: https://lovable.dev/projects/34dff912-7151-4bf3-a250-0682cdd5d015
+## Project Overview
 
-## How can I edit this code?
+The application allows users to:
+-   Enter a nickname.
+-   Join or create game sessions.
+-   Select teams.
+-   Participate in a quiz.
+-   Reveal prizes through a "Scratch Card" feature after the game (for the host).
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/34dff912-7151-4bf3-a250-0682cdd5d015) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
+-   **Vite:** For fast frontend tooling and development server.
+-   **React:** For building the user interface.
+-   **TypeScript:** For static typing and improved code quality.
+-   **Tailwind CSS:** For utility-first styling.
+-   **shadcn/ui:** For pre-built UI components.
+-   **Firebase:** (Assumed for backend/database, based on `firebase.ts` - please confirm if this is actively used for the quiz functionality).
+-   **React Router:** For client-side routing.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Getting Started Locally
 
-## How can I deploy this project?
+To run this project on your local machine, follow these steps:
 
-Simply open [Lovable](https://lovable.dev/projects/34dff912-7151-4bf3-a250-0682cdd5d015) and click on Share -> Publish.
+1.  **Clone the repository (if you haven't already):**
+    ```sh
+    git clone https://github.com/Waaajid/allthebest.git
+    cd allthebest
+    ```
 
-## Can I connect a custom domain to my Lovable project?
+2.  **Install dependencies:**
+    This project uses `npm` as its package manager.
+    ```sh
+    npm install
+    ```
 
-Yes, you can!
+3.  **Start the development server:**
+    This command will start the Vite development server, usually on `http://localhost:5173`.
+    ```sh
+    npm run dev
+    ```
+    The application should open automatically in your default web browser.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Key Features Implemented
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+-   **Nickname Entry:** Users start by providing a nickname.
+-   **Team Selection:** Users can join existing teams or, if hosting, manage game sessions.
+-   **Quiz Gameplay:** Core quiz logic (details to be added as developed).
+-   **Scratch Card Page:** A "Half-Day Friday" themed scratch card game to reveal prizes. This page replaces the old "Dice Roll" functionality.
+    -   Accessible via a "Reveal Prizes" button on the `TeamSelection` page (visible only to the session host).
+    -   Features a 3-card reveal with winning/losing messages.
+    -   Card distribution logic changes over a 3-attempt cycle.
+
+## Deployment
+
+### Local Development
+The application runs locally using `npm run dev`.
+
+### GitHub
+The codebase is hosted on GitHub: [https://github.com/Waaajid/allthebest.git](https://github.com/Waaajid/allthebest.git)
+
+### Vercel (Deployment In Progress)
+Attempts to deploy to Vercel have been made. However, there is currently an issue where the `npm install` command fails during Vercel's build process. The cause is under investigation by checking the Vercel deployment logs.
+
+**Latest Vercel Deployment Logs (for troubleshooting):**
+`https://vercel.com/q-f132f39d/quiz-red-ready/9d54veEdChuD9zyZhdmT69kHuqaQ/logs`
+
+## Project Structure Highlights
+
+-   `src/pages/`: Contains the main page components like `Index.tsx`, `TeamSelection.tsx`, `Quiz.tsx`, and `ScratchCardPage.tsx`.
+-   `src/components/`: Contains reusable UI components, including `ScratchCard.tsx` and UI elements from `shadcn/ui`.
+-   `src/context/QuizContext.tsx`: Manages the global state for the quiz application.
+-   `src/App.tsx`: Defines the main application routes.
+-   `public/`: Contains static assets.
+
+## Next Steps & Known Issues
+-   Resolve the Vercel deployment failure related to `npm install`.
+-   (Add any other known issues or planned features here)
+
+---
+This README was last updated on May 25, 2025.
